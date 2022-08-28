@@ -30,7 +30,7 @@
 **Copy FirstPass.cpp file**
 **Run**
 - To run see the script.sh file attached.
-- ./script --help for more information
+- ./script.sh --h for more information
  
 
 
