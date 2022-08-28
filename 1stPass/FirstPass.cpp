@@ -16,9 +16,9 @@ namespace {
 				errs() << "number or argument " <<F.getName() <<" function takes: " << F.arg_size() <<"\n" ;
 				return false;
 				}
-		}; // end of struct SG12345
+		}; // end of struct FirstPass
 }  // end of anonymous namespace
 
 char FirstPass::ID = 0;
 
-static RegisterPass<FirstPass> X("firstpass1", "First Pass Pass");
+static RegisterPass<FirstPass> X("firstpass1", "First Pass Pass");  //Registration of the pass
