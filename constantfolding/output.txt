@@ -1,0 +1,64 @@
+bin/opt -debug -passes=myconstantfolding /Users/compile_sanatan/ll/llvm_script/latest_llvm/testcase/constantfolding/basic_constant.ll -S
+Args: bin/opt -debug -passes=myconstantfolding /Users/compile_sanatan/ll/llvm_script/latest_llvm/testcase/constantfolding/basic_constant.ll -S
+Inside the function for analyzing basic_math_operation
+Analyzing the basic block  inside the function basic_math_operation
+Current instruction is:   %add_fold = add i32 4, 5
+ConstantFolded:   %add_fold = add i32 4, 5 to i32 9
+Current instruction is:   %add_result = add i32 9, %number
+Warning: Non-constant operands in instruction:   %add_result = add i32 9, %number
+Current instruction is:   %sub_result = sub i32 %add_result, 5
+Warning: Non-constant operands in instruction:   %sub_result = sub i32 %add_result, 5
+Current instruction is:   %mul_result = mul i32 %sub_result, 2
+Warning: Non-constant operands in instruction:   %mul_result = mul i32 %sub_result, 2
+Current instruction is:   %div_result = sdiv i32 %mul_result, 2
+Warning: Non-constant operands in instruction:   %div_result = sdiv i32 %mul_result, 2
+Current instruction is:   ret i32 %div_result
+Updated IR after complete Analyzing
+Updated IR after analyzing function basic_math_operation:
+define i32 @basic_math_operation(i32 %number) {
+  %add_result = add i32 9, %number
+  %sub_result = sub i32 %add_result, 5
+  %mul_result = mul i32 %sub_result, 2
+  %div_result = sdiv i32 %mul_result, 2
+  ret i32 %div_result
+}
+Updated IR after complete Analyzing
+define i32 @basic_math_operation(i32 %number) {
+  %add_result = add i32 9, %number
+  %sub_result = sub i32 %add_result, 5
+  %mul_result = mul i32 %sub_result, 2
+  %div_result = sdiv i32 %mul_result, 2
+  ret i32 %div_result
+}
+Inside the function for analyzing main
+Analyzing the basic block  inside the function main
+Current instruction is:   %number = add i32 4, 5
+ConstantFolded:   %number = add i32 4, 5 to i32 9
+Current instruction is:   %result = call i32 @basic_math_operation(i32 9)
+Current instruction is:   ret i32 %result
+Updated IR after complete Analyzing
+Updated IR after analyzing function main:
+define i32 @main() {
+  %result = call i32 @basic_math_operation(i32 9)
+  ret i32 %result
+}
+Updated IR after complete Analyzing
+define i32 @main() {
+  %result = call i32 @basic_math_operation(i32 9)
+  ret i32 %result
+}
+; ModuleID = '/Users/compile_sanatan/ll/llvm_script/latest_llvm/testcase/constantfolding/basic_constant.ll'
+source_filename = "/Users/compile_sanatan/ll/llvm_script/latest_llvm/testcase/constantfolding/basic_constant.ll"
+
+define i32 @basic_math_operation(i32 %number) {
+  %add_result = add i32 9, %number
+  %sub_result = sub i32 %add_result, 5
+  %mul_result = mul i32 %sub_result, 2
+  %div_result = sdiv i32 %mul_result, 2
+  ret i32 %div_result
+}
+
+define i32 @main() {
+  %result = call i32 @basic_math_operation(i32 9)
+  ret i32 %result
+}
