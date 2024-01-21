@@ -39,7 +39,7 @@ This pass will implement the basic concept of constant folding in a compiler. If
 7. **Run the Opt Tool:**
     Run the `opt` tool on the LLVM given in the repo to see the change. Use the following command:
     ```bash
-    bin/opt -debug -passes=myconstantfolding /path/to/testcase/basic_constant.ll -S
+    /path/to/bin/opt -debug -passes=myconstantfolding /path/to/testcase/basic_constant.ll -S
     ```
 
 8. **Check Output:**
